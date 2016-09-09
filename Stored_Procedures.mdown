@@ -1,4 +1,66 @@
 # MySql Stored Procedures - Programming in SQL
 While SQL is a powerful language allowing you to start what you want to do rather than how to do it, it cannot do everything that sofisticated applications required. For those things that SQL cannot do, there are **Stored Procedures**.
 
-Stored procedures are pieces of code stored in the database that can be executed from SQL.
+Stored procedures are pieces of code stored in the database that can be executed from SQL. They are written in the proprietary language of the SQL, but includes commands that cannot be used in the standard SELECT, INSERT, UPDATE, and DELETE commands.
+
+## Format of a stored procedure
+This is the format for creating a stored procedure:
+
+```sql
+DELIMITER //
+
+CREATE PROCEDURE TheStoredProcedureName(
+	IN Parm1 int,
+	IN Parm2 varchar(30),
+	OUT Parm3 int
+)
+BEGIN
+	-- stored procedure code goes here
+END//
+
+DELIMITER ;
+```
+It starts with the `DELIMITER //` statement. Because SQL interprets the semicolon (;), in order to use it in statements within the stored procedure body, we must redefine what the deliminter is by changing it to a double slash. Then we can use the semicolon to terminate lines in the body.
+
+Next comes the `CREATE PROCEDURE <procedurename>` which defines the unique name used to execute the stored procedure.
+
+The parantheses are required even of the stored procedure takes no parameters.
+
+Any parameters whether input or output parameters go inside the parantheses. They are preceeded by IN, OUT or INOUT designating whether the parameter is only for input (IN), output (OUT), or both (INOUT). Next is the parameter name and the type. Multiple parameters must be separated by a comma.
+
+The body of the stored procedure is surrounded by BEGIN .. END.
+
+### Variables
+Defining variables in the body of the stored procedure is done by starting with `DECLARE` then the variable name, then the type (i.e. DECLARE COUNTER int). Variable can use the sytax: `SET var = value;` or `SELECT val into var;`
+
+You can set variables using standard SELECT statements like this:
+
+```sql
+DECLARE major_description varchar(50);
+SELECT description into major_description from major where id = 0;
+```
+
+### IF statement
+The `IF` statement is NOT the same as the `IF()` function. The format for the IF statement is:
+
+```sql
+IF <condition> THEN
+	-- true condition
+ELSE -- optional
+	-- false condition (optional)
+END IF;
+```
+
+### LOOPING
+There is a `WHILE expression DO .. END WHILE' and a `REPEAT .. UNTIL expression END REPEAT` loop.
+
+### ERRORS
+You can generate errors when they occur in your stored procedure. To do so, when an error condition occurs, you issue the `SIGNAL SQLSTATE '45000'` which is a user error condition then set the variable `MESSAGE_TEXT` to whatever error message you want to display to the user.
+
+```sql
+-- Check SAT between 400 and 1600 inclusive
+IF SAT < 400 OR SAT > 1600 THEN
+	SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'SAT is out of range (400 <= x <= 1600)';
+END IF;
+```
