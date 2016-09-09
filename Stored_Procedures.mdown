@@ -1,0 +1,4 @@
+# MySql Stored Procedures - Programming in SQL
+While SQL is a powerful language allowing you to start what you want to do rather than how to do it, it cannot do everything that sofisticated applications required. For those things that SQL cannot do, there are **Stored Procedures**.
+
+Stored procedures are pieces of code stored in the database that can be executed from SQL.
