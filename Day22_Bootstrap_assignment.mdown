@@ -1,0 +1,16 @@
+# Day22 Assignment - Ehnancing the student listing with Bootstrap
+You will use what you've learned both with CSS directly and with Bootstrap to make your student listing web page look more professional and aesthetically pleasing. Follow the list of things to do carefully testing your page along the way. Look at it critically so that one change you make to make it look better does not undo or change something that was already working and looking good.
+
+## Details
+In your assignments repo, you should create a folder named Day22 and put all your file in that folder so that you can push everything up to GitHub to submit the assignment.
+
+## Things to do:
+1. Use one of the Helper classes > Contextual backgrounds on the `<h1>` tag
+2. Use one of the Helper classes > Contexual colors on the `<h3>` tag
+3. Use one of the Helper classes > Contextual backgrounds on the headings at the top of each of the two `<div>` tags that say, "Things I like about this class" and "Things I think would improve the class" (_Hint: it might be worthwhile if you haven't already to put these pieces of text withing some tag_)
+4. Add styles to the table so that it displays: striped, bordered, and condensed
+5. Display the column headings using the `bg-info` class
+6. Display the footer that reads something like, "This page created by Greg Doud" as:
+   - a black background
+   - silver text
+   - centered

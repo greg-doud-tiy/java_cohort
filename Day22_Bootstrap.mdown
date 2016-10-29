@@ -1,0 +1,7 @@
+# Day22 - Ehnancing the student listing with Bootstrap
+Now that you know how to use CSS to stylize your page, we can use a very powerful tool called Bootstrap to make stylizing must simpler and more consistent.
+
+## Download from Slack and install Bootstrap
+To keep from having everyone download Bootstrap, I've downloaded it and posted it as a file to Slack. The file name is `bootstrap-3.3.7-dist.zip`. The file is a ZIP file. Download it from Slack to your computer. Double click the file and you'll see three folders inside. You need to copy those three folders to your root directory where your `index.html` file is.
+
+## Connect Bootstrap to your code

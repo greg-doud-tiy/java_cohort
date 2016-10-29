@@ -1,0 +1,41 @@
+# Lecture - JDBC
+Java DataBase Connectivity is a component of Java that allows Java programs to communicate with SQL databases.
+
+## Connection
+A java.sql.Connection is required to talk to a SQL database. You must create this connection object before anything else.
+
+```java
+myConn = DriverManager.getConnection(url, user, password);
+```
+
+The `url`, `user`, and `password` (all Strings) are required parameters for the connection.
+
+- `url` is a url with multiple components. Here is an example for our `tiy` database:
+
+```java
+jdbc:mysql://localhost:3306/tiy?autoReconnect=true&useSSL=false
+```
+
+  - The url must start with `jdbc:`
+  - To connect with a MySql database, `mysql://` follows
+  - `localhost:3306/` indicates that the MySql database is on this machine and uses port 3306 to communicate.
+  - `tiy` is the name of the database to connect to
+  - `?` indicates more parameters follow. If not more, this can be omitted
+  - `autoReconnect=true` tells JDBC to reconnect automatically if it gets disconnected
+  - `useSSL=false` indicates the server is not using SSL to encrypt data
+
+## Statement
+A java.sql.Statement is created by calling the createStatement() method from the Connection object. No parameters are needed, but the Statement will be used to execute SQl statements.
+
+## ResultSet
+A java.sql.ResultSet will be used to hold the data from a SELECT statement. After the SELECT is executed, calling the `next()` method will retrieve the rows in the result set one by one. `next()` will return true if a row was returned and false if not.
+
+## Retrieving individual data items.
+Once `next()` is called, individual column values can be returned by calling `getXXX()` on the result set where XXX is the type of data the column holds. For example, to return a column that contains a `String`:
+
+```java
+String str = rs.getString();
+```
+
+## Properties
+It is not good programming practice to embed hard-coded user names and passwords

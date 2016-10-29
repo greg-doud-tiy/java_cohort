@@ -1,0 +1,61 @@
+# Day22 - Ehnancing the student listing with more CSS & Bootstrap
+You've been introduced to CSS at a very basic level. Let's do a quick recap of what we learned.
+
+There is a hierarchy to how CSS styles are applied and which ones 'overrule' others. At the highest level are styles attached directly to particular html tags. These styles override any other style applied in any way. If you attach a `style="color:green;"` to a tag, the text in that tag will display in green; period. At the next level are styles defined for the entire page which are in the `<style>` tag in the `<head>` section. These styles apply to all the tags on that page. Finally, we have style sheets that are defined with `<link>` statements in the `<head>` section. They apply styles to all the pages they're linked into.
+
+One other circumstance we ran into is if there is one tag within another tag. A style attched to the inner tag overrules a style on the outer tag.
+
+All styles have the format of `x:y` where x is a style identifier and y is the value.
+
+## Stylesheet formats
+
+In a separate stylesheet, styles can be defined for:
+- all occurrances of an HTML tag (i.e. div { color: red; })
+- a tag with an id="xxx" attribute of which there can only be one in the document (i.e. div#xxx { color: blue; })
+- all tags with the assocated class="zzz" value (i.e. #zzz { color: yellow; })
+
+Multiple styles must be separated by a semicolor (i.e. div { color: red; text-align: center; })
+
+Now that you know how to use CSS to stylize your page, we can use a very powerful tool called Bootstrap to make stylizing must simpler and more consistent.
+
+## Applying the same style to multiple tags
+It is easy to apply the same style to multiple tags, ids, and classes. Just include all the tags you wan to apply the style to separated by commas.
+
+```css
+body, div, p, span, #justone, .aclass {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+```
+
+## Combinators
+You can use the structure of HTML will defines styles based on that structure. For example, supposed you have lots of paragraphs throughout your page including some inside a <div>. You could define to CSS that you want only those paragraphs within the div to be a certain style. You would do it like this:
+
+```css
+div p { 
+	color: blue; 
+}
+```
+
+## The box model
+All elements of HTML can be thought of as boxes. Some are easy to picture like <div> but even <p> can be though of this way. As a box, you can put a border around it on all sides and that border will appear on the top, right, bottom, and left of it. If you think of that border as the 'sides' of the box, the box also has a margin and a padding associated with it. The margin is an area OUTSIDE the box and the padding is an areas INSIDE the box. You can set styles on margin and padding that keep tags outside the box or tags inside the box a certain distance away from the border. You can see a picture of this [here] (http://www.w3schools.com/css/css_boxmodel.asp).
+
+By separating the div and p with a space, it indicates only the paragraphs within the div. All other paragraphs are not affected.
+
+## Download from Slack and install Bootstrap
+To keep from having everyone download Bootstrap, I've downloaded it and posted it as a file to Slack. The file name is `bootstrap-3.3.7-dist.zip`. The file is a ZIP file. Download it from Slack to your computer. Double click the file and you'll see three folders inside. You need to copy those three folders to your root directory where your `index.html` file is.
+
+## Connect Bootstrap to your code
+Now that you have Bootstrap copied to your root directory for your page, you need to add a <link> tag in your <head> section to point to the library. It should look like this:
+
+```html
+<link href="css/bootstrap.min.css" rel="stylesheet">
+```
+
+This makes all the facilities of bootstrap available to your html page.
+
+## Using Bootstrap CSS
+It is very easy to use Bootstrap on your web page. Virtually everything involves attaching one or more classes to HTML tags. Remember that you can put more than one class withing the class attribute like this: `<div class="class1 class2 .. classN"` Put as many as you need and separate each by a space.
+
+[The CSS Bootstrap page] (http://getbootstrap.com/css/#overview) is a great reference to see what different Bootstrap styles look like and what their class names are.
